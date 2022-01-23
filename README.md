@@ -123,6 +123,10 @@ curl -O https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.4.0/
 ```
 kubectl apply -f example.yaml
 ```
+
+## Reference
+* [Configure Cockroachdb Kubernetes](https://www.cockroachlabs.com/docs/v21.2/configure-cockroachdb-kubernetes?filters=manual)
+
 ## Streaming/Message Queue
 I choose NATS/JetStream
 
