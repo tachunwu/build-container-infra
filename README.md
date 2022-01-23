@@ -40,7 +40,7 @@ kubectl minio init
 ```
 
 ### Install Storage Provider
-MinIO recommend use their CSI driver, but their driver not work on my kubernetes version.I use rancher's local path provisioner.
+MinIO recommend use their CSI driver, but their driver not work on my kubernetes version. So I use rancher's local path provisioner.
 ```
 kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/master/deploy/local-path-storage.yaml
 ```
@@ -103,11 +103,35 @@ pvc-d2e26f6b-9cc0-40a1-9a87-0301ed6df1bc   2560Mi     RWO            Delete     
 ## Database
 I choose CockroachDB, YugabyteDB.
 
+### Install CockraochDB CRD
+```
+kubectl apply -f https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.4.0/install/crds.yaml
+```
+### Install CockraochDB Operator
+```
+kubectl apply -f https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.4.0/install/operator.yaml
+```
+### Verify operator
+```
+kubectl get pods
+```
+### Download cluster yaml
+```
+curl -O https://raw.githubusercontent.com/cockroachdb/cockroach-operator/v2.4.0/examples/example.yaml
+```
+### Install CockroachDB Cluster
+```
+kubectl apply -f example.yaml
+```
 ## Streaming/Message Queue
 I choose NATS/JetStream
 
 
 ## API Gateway
+I choose Emissary-Ingress.
+
+## Reference
+* [Emissary](https://www.getambassador.io/docs/emissary/)
 
 ## Service Mesh
 I choose Linkerd, Istio.
